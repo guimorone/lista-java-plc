@@ -111,7 +111,7 @@ class ExprLogica implements Expression {
     String aux = "";
     final int len = expr.length();
     for(int i = 0; i < len; i++) {
-      if(expr.charAt(i) == '>' || expr.charAt(i) == '<' || expr.charAt(i) == '=') {
+      if(expr.charAt(i) == '>' || expr.charAt(i) == '<' || expr.charAt(i) == '=' || expr.charAt(i) == '!') {
         aux += expr.charAt(i);
       }
     }
@@ -146,7 +146,7 @@ class ExprLogica implements Expression {
     String aux = "";
     final int len = expr.length();
     for(int i = 0; i < len; i++) {
-      if(expr.charAt(i) == '>' || expr.charAt(i) == '<' || expr.charAt(i) == '=') {
+      if(expr.charAt(i) == '>' || expr.charAt(i) == '<' || expr.charAt(i) == '=' || expr.charAt(i) == '!') {
         aux += expr.charAt(i);
       }
     }
@@ -221,5 +221,6 @@ public class Q6 {
       System.out.println("ao chamar imprimirArvore: " + x.imprimirArvore(teste));
     }
 
+    scan.close();
   }
 }
