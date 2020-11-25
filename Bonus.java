@@ -10,6 +10,10 @@ class ExprAritmetica implements Expression {
   protected String expression;
   private double contaValor = 0; // resultado da expressão em avaliar
 
+  public String toString(String expr){
+    return expr;
+}
+
   public String avaliar(String expr) {
     
     if(expr.contains("+")) {
@@ -92,6 +96,10 @@ class ExprLogica implements Expression {
   protected String expression;
   private ExprAritmetica[] exs = new ExprAritmetica[2]; // para dividir as duas expressões aritmeticas entre o operador logico
 
+  public String toString(String expr){
+    return expr;
+  }
+
   public String avaliar(String expr) {
     String aux = "";
     final int len = expr.length();
@@ -154,6 +162,10 @@ class ExprLogica implements Expression {
 
 class ExprOpTernario implements Expression {
   protected String expression;
+
+  public String toString(String expr){
+    return expr;
+  }
 
   public boolean checaExpr(String expr) {
     final int len = expr.length();
