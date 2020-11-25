@@ -56,46 +56,31 @@ class ExprAritmetica implements Expression {
   }
 
   public String imprimirArvore(String expr) {
-
-    if(expr.contains("+")) {
-      String[] soma = expr.split("[+]"); // tem que usar isso pq '*' é um caractere especial
-      String valor = "(";
-      for(String i : soma) {
-        valor += imprimirArvore(i);
-        valor += '+';
+    int len = expr.length();
+    for(int i = 0; i < len; i++){
+      if(expr.charAt(i) == '+') {
+        return "(" + imprimirArvore(expr.substring(0, i)) + "+" + imprimirArvore(expr.substring(i + 1, len)) + ")";
       }
-      valor = valor.substring(0, valor.length() - 1); // para tirar o ultimo operador a mais
-      return valor + ")";
-    } else if(expr.contains("-")) {
-      String[] sub = expr.split("-");
-      String valor = "(";
-      for(String i : sub) {
-        valor += imprimirArvore(i);
-        valor += '-';
-      }
-      valor = valor.substring(0, valor.length() - 1);
-      return valor + ")";
-    } else if(expr.contains("*")){
-      String[] mult = expr.split("[*]");
-      String valor = "(";
-      for(String i : mult) {
-        valor += imprimirArvore(i);
-        valor += '*';
-      }
-      valor = valor.substring(0, valor.length() - 1);
-      return valor + ")";
-    } else if(expr.contains("/")) {
-      String[] div = expr.split("[/]");
-      String valor = "(";
-      for(String i : div) {
-        valor += imprimirArvore(i);
-        valor += '/';
-      }
-      valor = valor.substring(0, valor.length() - 1);
-      return valor + ")";
-    } else {
-      return "(" + expr + ")";
     }
+
+    for(int i = 0; i < len; i++){
+      if(expr.charAt(i) == '-') {
+        return "(" + imprimirArvore(expr.substring(0, i)) + "-" + imprimirArvore(expr.substring(i + 1, len)) + ")";
+      }
+    }
+
+    for(int i = 0; i < len; i++){
+      if(expr.charAt(i) == '*') {
+        return "(" + imprimirArvore(expr.substring(0, i)) + "*" + imprimirArvore(expr.substring(i + 1, len)) + ")";
+      }
+    }
+
+    for(int i = 0; i < len; i++){
+      if(expr.charAt(i) == '/') {
+        return "(" + imprimirArvore(expr.substring(0, i)) + "/" + imprimirArvore(expr.substring(i + 1, len)) + ")";
+      }
+    }
+    return "(" + expr + ")";
   }
 
   public ExprAritmetica(String expr) {
